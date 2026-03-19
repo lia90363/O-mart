@@ -80,5 +80,7 @@ export const useCartStore = defineStore('cart', () => {
     updateQtyByInput,
     totalPrice,
     totalItems
-  }
-})
+  };
+}, {
+  persist: true
+});

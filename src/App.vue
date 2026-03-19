@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar">
-    <RouterLink to="/" class="nav-img" @click="productStore.resetSearch()">
+    <a href="javascript:void(0)" class="nav-img" @click.prevent="handleLogoClick">
       <img src="/O-mart01.jpg" alt="Logo" />
-    </RouterLink>
+    </a>
     <RouterLink to="/cart" class="nav-button">
       購物車
       <span v-if="cartCount > 0" class="cart-badge">
@@ -38,25 +38,26 @@ import { useProductStore } from '@/stores/productStore'
 import { useCartStore } from '@/stores/cartStore'
 import { useAuthStore } from '@/stores/authStore';
 import { useToastStore } from '@/stores/useToastStore'
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
+const route = useRoute()
 const authStore = useAuthStore();
 const router = useRouter();
 
 const productStore = useProductStore();
 
-const handleLogout = () => {
-  const currentRoute = router.currentRoute.value;
-  
-  authStore.logout();
+const handleLogoClick = () => {
+  productStore.resetSearch()
 
-  // 如果目前的頁面需要登入才能看，登出後就跳回首頁
-  if (currentRoute.meta.requiresAuth) {
-    router.push('/'); 
-    // 或者跳到 /login 並帶上 redirect，讓使用者登入後能回來
-    // router.push({ name: 'login', query: { redirect: currentRoute.fullPath } });
+  if (route.path === '/') {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  } else {
+    router.push('/')
   }
-};
+}
 
 const cartStore = useCartStore()
 
