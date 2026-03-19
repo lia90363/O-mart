@@ -81,14 +81,14 @@ const handleSubmit = () => {
       <input 
         v-model="loginForm.account" 
         type="text" 
-        placeholder="帳號" 
+        placeholder="帳號(您的英文名字)" 
         :disabled="isLoading" 
         required
       >
       <input 
         v-model="loginForm.password" 
         type="password" 
-        placeholder="密碼" 
+        placeholder="密碼(您的4碼生日)" 
         :disabled="isLoading" 
         required
       >
