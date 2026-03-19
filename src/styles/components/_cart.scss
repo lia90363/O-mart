@@ -8,13 +8,9 @@
     width: 80%;
     margin: 20px auto;
     list-style: none;
-    margin-bottom: 80px;
-    padding: 30px auto;
+    margin: 20px auto;
+    padding-bottom: 120px; 
     max-width: 900px;
-    @include respond(sm) {
-        margin: 10px;
-        gap: 10px;
-    }
 }
 
 .cart-card{
@@ -29,7 +25,6 @@
     overflow: hidden;    
     padding: 20px;
     align-items: center;
-
 
     .cart-img{
         width: 100%;
@@ -203,7 +198,8 @@
     .cart-flex {
         width: 95%; // 手機版卡片寬一點，才不會兩邊空空的
         padding-top: 12px;
-        padding-bottom: 32px;
+        padding-bottom: 80px;
+        gap: 12px;
     }
     .cart-card {
         grid-template-columns: 100px 1fr; 
@@ -264,8 +260,6 @@
         }
     }
 
-
-
     .cart-footer {
         padding: 12px 20px; 
         height: auto; 
@@ -274,10 +268,6 @@
         align-items: center;
         background-color: rgba(255, 255, 255, 0.98); 
         box-shadow: 0 -1px 0 $gray; 
-        
-        ~ .cart-flex { 
-            padding-bottom: 80px; 
-        }
 
         .total-amount-section {
             display: flex;
