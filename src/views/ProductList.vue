@@ -38,21 +38,20 @@ onMounted(() => {});
         
         <ul v-else class="product-grid">
             <li v-for="item in productStore.filteredProducts" :key="item.id" class="card">
-                <div class="card-img-placeholder">
-                    <router-link :to="`/product/${item.id}`">
+                <router-link :to="`/product/${item.id}`">
+                    <div class="card-img-placeholder">
                         <img 
                             :src="item.variants?.[0]?.image || item.image" 
                             :alt="item.title" 
                             loading="lazy"
                         >
-                    </router-link>
-                </div>
-                
-                <div class="card-info">
-                    <router-link :to="`/product/${item.id}`" class="title">{{ item.title }}</router-link>
-                    <div class="price">NT$ {{ item.price }}</div>
-                    <button @click="cartStore.addToCart(item)" class="add-btn">加入購物車</button>
-                </div>
+                    </div>
+                    
+                    <div class="card-info">
+                        <div class="title">{{ item.title }}</div>
+                        <div class="price">NT$ {{ item.price }}</div>
+                    </div>
+                </router-link>
             </li>
         </ul>
 

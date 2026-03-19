@@ -41,13 +41,20 @@
     }
   
     @include respond(sm) {
-      flex-basis: 100%; 
-      margin-left: 10px;
-      order: 2; // 確保它排在文字下面
+      flex-basis: 100%;   // 💡 讓搜尋欄在手機版「換行」獨立佔據一排
+      margin-left: 0;     // 💡 手機版不再靠右，改為水平撐開
+      margin-top: 2px;    // 與上面的 Logo/按鈕拉開一點距離
+      order: 3;           // 確保它排在導覽連結的下面
       
       input {
-        padding: 8px 15px; // 手機版加高一點，比較好點擊
-        font-size: 16px;   // 防止 iOS 點擊輸入框時自動放大畫面
+        flex: 1;          // 💡 關鍵：讓搜尋框自動佔滿手機剩餘寬度
+        font-size: 16px;  // 防止 iOS 自動放大
+        height: 40px;     // 手機版稍微加高，比較好按
+      }
+
+      .select {
+        width: 70px;      // 💡 給下拉選單固定寬度，就不會擠扁 input
+        height: 40px;     // 與 input 保持一致
       }
     }
 
