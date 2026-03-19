@@ -26,12 +26,13 @@ const handleLogin = async () => {
     const res = await authStore.login(loginForm.account, loginForm.password);
     
     if (res.success) {
-      // 成功後跳轉：優先回原本被攔截的頁面，否則回首頁
       const redirectPath = route.query.redirect || '/';
       router.push(redirectPath);
+      toast.showToast('歡迎回來！'); 
+    } else {
+      toast.showToast(res.message || '帳號或密碼錯誤');
     }
   } catch (err) {
-    // 這裡承接 authStore throw 出來的 Error
     toast.showToast(err.message || '伺服器連線異常');
   } finally {
     isLoading.value = false;

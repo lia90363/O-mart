@@ -59,6 +59,20 @@ const handleLogoClick = () => {
   }
 }
 
+const handleLogout = () => {
+  const currentRoute = router.currentRoute.value;
+  
+  authStore.logout();
+
+  if (toastStore) {
+    toastStore.showToast('您已成功登出！');
+  }
+
+  if (currentRoute.meta?.requiresAuth || currentRoute.path === '/cart') {
+    router.push('/');
+  }
+};
+
 const cartStore = useCartStore()
 
 const cartCount = computed(() => cartStore.totalItems)
